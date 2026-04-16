@@ -20,11 +20,13 @@ class StorePostRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
-   public function rules(): array {
+ public function rules(): array {
     return [
         'title' => 'required|min:3|unique:posts,title',
         'description' => 'required|min:10',
         'user_id' => 'required|exists:users,id',
+    
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
     ];
 }
 }

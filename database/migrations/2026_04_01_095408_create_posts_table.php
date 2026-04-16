@@ -9,15 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void {
+  public function up(): void {
     Schema::create('posts', function (Blueprint $table) {
         $table->id();
         $table->string('title');
         $table->text('description');
+        $table->string('image_path')->nullable(); 
         $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
         $table->softDeletes(); 
         $table->timestamps();
     });
+
 }
 
     /**
@@ -28,3 +30,5 @@ return new class extends Migration
         Schema::dropIfExists('posts');
     }
 };
+
+
